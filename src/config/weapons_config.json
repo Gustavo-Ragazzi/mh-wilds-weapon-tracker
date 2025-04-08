@@ -1,0 +1,72 @@
+{
+  "GS": {
+    "primary": 0,
+    "secondary": 0,
+    "adjustment": 0
+  },
+  "LS": {
+    "primary": 0,
+    "secondary": 0,
+    "adjustment": 0
+  },
+  "SnS": {
+    "primary": 0,
+    "secondary": 0,
+    "adjustment": 0
+  },
+  "DS": {
+    "primary": 0,
+    "secondary": 0,
+    "adjustment": 0
+  },
+  "HM": {
+    "primary": 0,
+    "secondary": 0,
+    "adjustment": 0
+  },
+  "HH": {
+    "primary": 0,
+    "secondary": 0,
+    "adjustment": 0
+  },
+  "LC": {
+    "primary": 0,
+    "secondary": 0,
+    "adjustment": 0
+  },
+  "GL": {
+    "primary": 0,
+    "secondary": 0,
+    "adjustment": 0
+  },
+  "SA": {
+    "primary": 0,
+    "secondary": 0,
+    "adjustment": 0
+  },
+  "CB": {
+    "primary": 0,
+    "secondary": 0,
+    "adjustment": 0
+  },
+  "IG": {
+    "primary": 0,
+    "secondary": 0,
+    "adjustment": 0
+  },
+  "LBG": {
+    "primary": 0,
+    "secondary": 0,
+    "adjustment": 0
+  },
+  "HBG": {
+    "primary": 1,
+    "secondary": 0,
+    "adjustment": 0
+  },
+  "Bow": {
+    "primary": 0,
+    "secondary": 0,
+    "adjustment": 0
+  }
+}
