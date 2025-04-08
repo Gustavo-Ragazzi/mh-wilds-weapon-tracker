@@ -1,6 +1,6 @@
 # Weapon Tracker
 
-Weapon Tracker is a cross-platform Python desktop application built with Tkinter that helps you track weapon usage in **Monster Hunter Wilds**.  
+Weapon Tracker is a cross-platform Python desktop application built with Tkinter that helps you track weapon usage in **Monster Hunter Wilds**.
 It features a clean UI, configuration persistence, and automatic build & release integration via GitHub Actions.
 
 ## 🛠 Features
