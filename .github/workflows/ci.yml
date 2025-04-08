@@ -2,7 +2,6 @@ name: CI and Release
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened, ready_for_review]
     branches: [main]
   push:
     branches: [main]
@@ -24,7 +23,7 @@ jobs:
         uses: abatilo/actions-poetry@v2
 
       - name: Install dependencies
-        run: poetry install
+        run: poetry install --no-root
 
       - name: Run pre-commit checks
         run: poetry run pre-commit run --all-files
@@ -45,7 +44,7 @@ jobs:
         uses: abatilo/actions-poetry@v2
 
       - name: Install dependencies
-        run: poetry install
+        run: poetry install --no-root
 
       - name: Extract version from pyproject.toml
         id: get_version
