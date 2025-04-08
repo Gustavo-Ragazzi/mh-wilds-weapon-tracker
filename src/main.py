@@ -1,8 +1,7 @@
-import os
 from core.tracker import WeaponTracker
 from ui.interface import TrackerUI
+from utils.config_path import get_config_path
 
-if __name__ == "__main__":
-  config_path = os.path.join(os.path.dirname(__file__), "config", "weapons_config.json")
-  tracker = WeaponTracker(config_path)
-  TrackerUI(tracker)
+config_path = get_config_path()
+tracker = WeaponTracker(config_path)
+TrackerUI(tracker)
