@@ -1,11 +1,10 @@
-.PHONY: build clean run
+.PHONY: install-dev build clean
+
+install-dev:
+	poetry install
 
 build:
-	pyinstaller --onefile src/main.py --name weapon-tracker
-	cp config/default.json dist/weapons_config.json
+	poetry run pyinstaller --onefile src/main.py --name weapon-tracker
 
 clean:
-	rm -rf build dist __pycache__ *.spec
-
-run:
-	./dist/weapon-tracker
+	rm -rf dist build *.spec __pycache__

@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "weapon-tracker"
+version = "1.0.0"
+description = "Monster Hunter World Weapon Tracker"
+authors = ["Gustavo Ragazzi Amorim"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.14"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.11"
+flake8 = "^6.1.0"
+pre-commit = "^3.5.0"
+pyinstaller = "^6.12.0"
+tomli = "^2.0.1"
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+[tool.flake8]
+max-line-length = 88
+exclude = [".git", "__pycache__", "build", "dist"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

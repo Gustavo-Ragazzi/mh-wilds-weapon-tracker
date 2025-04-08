@@ -1,0 +1,73 @@
+name: CI and Release
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  pre-commit:
+    name: Pre-commit checks
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install Poetry
+        uses: abatilo/actions-poetry@v2
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Run pre-commit checks
+        run: poetry run pre-commit run --all-files
+
+  build-and-release:
+    name: Build and Release for Windows
+    runs-on: windows-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install Poetry
+        uses: abatilo/actions-poetry@v2
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Extract version from pyproject.toml
+        id: get_version
+        shell: bash
+        run: |
+          version=$(grep '^version =' pyproject.toml | sed -E 's/version = "(.*)"/\1/')
+          echo "VERSION=$version" >> $GITHUB_ENV
+
+      - name: Build executable with PyInstaller
+        run: |
+          poetry run pyinstaller --onefile src/main.py --name weapon-tracker.exe
+          copy config\default.json dist\weapons_config.json
+
+      - name: Create ZIP package
+        run: |
+          powershell Compress-Archive -Path dist\weapon-tracker.exe,dist\weapons_config.json -DestinationPath dist\release.zip
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: "Release v${{ env.VERSION }}"
+          tag_name: "v${{ env.VERSION }}"
+          files: dist/release.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
