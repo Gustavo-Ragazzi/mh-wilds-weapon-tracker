@@ -8,7 +8,7 @@ class TrackerUI:
         self.tracker = tracker
         self.root = tk.Tk()
         self.root.title("Monster Hunter Weapon Tracker")
-        self.root.geometry("650x670")
+        self.root.geometry("650x700")
         self.root.configure(bg="#2e2e2e")
 
         style = ttk.Style()
